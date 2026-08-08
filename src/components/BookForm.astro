@@ -20,7 +20,7 @@ const services = ['Cleaning & exam', 'Cosmetic / whitening', 'Crown, veneer or b
     <div id="book" class="scroll-mt-24 grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
 
       <!-- Visit info -->
-      <div>
+      <div class="force-dark">
         <p class="reveal chip text-mint mb-4 flex items-center gap-3"><span class="hair w-9" style="background:linear-gradient(90deg,var(--color-coral),transparent);"></span> Book your visit</p>
         <h2 class="reveal font-display text-cream text-[clamp(2rem,5vw,3.4rem)] font-semibold leading-[1.02] text-balance">Let’s get you smiling.</h2>
         <p class="reveal text-cream/80 text-base sm:text-lg leading-relaxed mt-5 max-w-md">Request a time below and we’ll confirm by phone — or call us directly and a friendly voice will help you book in minutes.</p>
@@ -96,8 +96,8 @@ const services = ['Cleaning & exam', 'Cosmetic / whitening', 'Crown, veneer or b
                 </select>
               </label>
               <label class="block">
-                <span class="block text-sm font-medium text-ink mb-1.5">Preferred day / time</span>
-                <input name="preferred" type="text" placeholder="e.g. weekday mornings" class="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-soft/50 focus:border-teal outline-none transition-colors" />
+                <span class="block text-sm font-medium text-ink mb-1.5">Preferred day / time <span class="text-ink-soft font-normal">(optional)</span></span>
+                <input name="preferred" type="text" class="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-soft/50 focus:border-teal outline-none transition-colors" />
               </label>
               <label class="block sm:col-span-2">
                 <span class="block text-sm font-medium text-ink mb-1.5">Anything we should know? <span class="text-ink-soft font-normal">(optional)</span></span>

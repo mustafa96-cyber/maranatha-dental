@@ -49,9 +49,16 @@
     --color-mint: #1d4d44; --color-coral: #f2775a; --color-coral-ink: #f79b84; --color-gold: #e6bd6a;
   }
 }
-/* Dark accent bands keep their designed light-text look in both themes */
+/* Dark accent bands keep their designed dark-ground / light-text look in BOTH
+   themes. We must also lock the "cream" (surface/text-cream) and "teal-deep"
+   (band background) tokens — otherwise in dark mode text-cream flips to a dark
+   value and the band becomes dark-text-on-dark. These match the light theme's
+   dark-band values so the light theme is unchanged. */
 .force-dark {
-  --color-ink: #eef6f2; --color-ink-soft: #b3c7c0; --color-teal-ink: #6fd6c6; --color-coral-ink: #f79b84;
+  --color-cream: #faf8f3; --color-cream-2: #eef5f0;
+  --color-ink: #eef6f2; --color-ink-soft: #b3c7c0;
+  --color-teal: #0d7d70; --color-teal-ink: #6fd6c6; --color-teal-deep: #093f39;
+  --color-mint: #bfe8db; --color-coral: #ef6f53; --color-coral-ink: #f79b84; --color-gold: #d9a441;
 }
 
 /* Theme toggle */
