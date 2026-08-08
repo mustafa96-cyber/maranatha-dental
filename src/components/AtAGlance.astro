@@ -1,0 +1,24 @@
+---
+// Honest "at a glance" access band — real hours & access facts, no invented stats.
+const tiles = [
+  { big: '6', suffix: '', label: 'days open every week', sub: 'Monday through Saturday' },
+  { big: '7', suffix: 'pm', label: 'open late Tue–Thu', sub: 'appointments after work' },
+  { big: 'Sat', suffix: '', label: 'weekend visits', sub: '9am – 3pm on Saturdays' },
+  { big: 'PPO', suffix: '', label: 'insurance accepted', sub: 'plus flexible financing' },
+];
+---
+<section class="force-dark bg-teal-deep text-cream py-14 sm:py-16" aria-label="Hours and access at a glance">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6 divide-teal-deep">
+      {tiles.map((t, i) => (
+        <div class="reveal text-center sm:text-left px-2 lg:border-l lg:first:border-l-0 border-mint/20" style={`animation-delay:${i * 90}ms`}>
+          {/^\d+$/.test(t.big)
+            ? <p class="stat-num"><span data-count={t.big} data-suffix={t.suffix}>0{t.suffix}</span></p>
+            : <p class="stat-num">{t.big}</p>}
+          <p class="text-cream font-semibold mt-2 leading-tight">{t.label}</p>
+          <p class="text-cream/65 text-sm mt-1">{t.sub}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

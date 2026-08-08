@@ -1,0 +1,119 @@
+---
+// Appointment request (demo) + click-to-call + hours + map.
+// Web3Forms demo endpoint: replace data-key with a real key to deliver for real.
+const PHONE = '(714) 537-7773';
+const TEL = 'tel:+17145377773';
+const hours = [
+  ['Monday', '9:00 am – 6:00 pm'],
+  ['Tuesday', '9:00 am – 7:00 pm'],
+  ['Wednesday', '9:00 am – 7:00 pm'],
+  ['Thursday', '9:00 am – 7:00 pm'],
+  ['Friday', '9:00 am – 6:00 pm'],
+  ['Saturday', '9:00 am – 3:00 pm'],
+  ['Sunday', 'Closed'],
+];
+const services = ['Cleaning & exam', 'Cosmetic / whitening', 'Crown, veneer or bridge', 'Dental implant', 'Emergency visit', 'Kids / family visit', 'Something else'];
+---
+<section id="visit" class="relative bg-teal-deep text-cream py-20 sm:py-28 scroll-mt-20 overflow-hidden" data-split>
+  <div class="absolute -top-16 -left-16 w-80 h-80 rounded-full bg-mint/10 blobby" aria-hidden="true"></div>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8 relative">
+    <div id="book" class="scroll-mt-24 grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+
+      <!-- Visit info -->
+      <div>
+        <p class="reveal chip text-mint mb-4 flex items-center gap-3"><span class="hair w-9" style="background:linear-gradient(90deg,var(--color-coral),transparent);"></span> Book your visit</p>
+        <h2 class="reveal font-display text-cream text-[clamp(2rem,5vw,3.4rem)] font-semibold leading-[1.02] text-balance">Let’s get you smiling.</h2>
+        <p class="reveal text-cream/80 text-base sm:text-lg leading-relaxed mt-5 max-w-md">Request a time below and we’ll confirm by phone — or call us directly and a friendly voice will help you book in minutes.</p>
+
+        <a href={TEL} class="reveal group flex items-center gap-4 mt-8 p-4 rounded-2xl bg-cream/5 hover:bg-cream/10 border border-mint/20 transition-colors max-w-md" aria-label={`Call Maranatha Dental at ${PHONE}`}>
+          <span class="inline-flex w-12 h-12 rounded-full bg-coral text-[#22140d] items-center justify-center shrink-0" aria-hidden="true">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25z" /></svg>
+          </span>
+          <span>
+            <span class="block text-cream/60 text-xs uppercase tracking-wider">Call us</span>
+            <span class="block font-display text-2xl font-semibold text-cream group-hover:text-mint transition-colors">{PHONE}</span>
+          </span>
+        </a>
+
+        <div class="reveal grid sm:grid-cols-2 gap-6 mt-8">
+          <div>
+            <h3 class="text-mint text-xs font-bold uppercase tracking-[0.16em] mb-3">Office hours</h3>
+            <dl class="space-y-1.5">
+              {hours.map(([d, h]) => (
+                <div class="flex justify-between gap-4 text-sm border-b border-mint/10 pb-1.5">
+                  <dt class="text-cream/70">{d}</dt>
+                  <dd class="text-cream font-medium tnum">{h}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <div>
+            <h3 class="text-mint text-xs font-bold uppercase tracking-[0.16em] mb-3">Find us</h3>
+            <p class="text-cream font-medium">Maranatha Dental</p>
+            <p class="text-cream/70 text-sm">11122 Trask Ave<br/>Garden Grove, CA 92843</p>
+            <div class="mt-4 rounded-xl overflow-hidden border border-mint/20">
+              <iframe
+                title="Map to Maranatha Dental, 11122 Trask Ave, Garden Grove"
+                src="https://www.google.com/maps?q=11122+Trask+Ave,+Garden+Grove,+CA+92843&output=embed"
+                width="100%" height="180" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form card -->
+      <div class="reveal-scale" data-form-card>
+        <div class="card-soft !bg-cream p-6 sm:p-8">
+          <div data-status hidden class="text-center py-10">
+            <span class="inline-flex w-16 h-16 rounded-full bg-teal/15 text-teal-ink items-center justify-center mb-4" aria-hidden="true">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+            </span>
+            <h3 class="font-display text-2xl font-semibold text-ink">Request received!</h3>
+            <p class="text-ink-soft mt-2 max-w-sm mx-auto">Thanks — we’ll call to confirm your appointment. Need care sooner? Call us at (714) 537-7773.</p>
+          </div>
+
+          <form class="lead-form" data-key="YOUR_WEB3FORMS_KEY" data-subject="New appointment request — Maranatha Dental" novalidate>
+            <p class="font-display text-2xl font-semibold text-ink mb-1">Request an appointment</p>
+            <p class="text-ink-soft text-sm mb-6">We’ll reply to confirm a time that works for you.</p>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <label class="block sm:col-span-2">
+                <span class="block text-sm font-medium text-ink mb-1.5">Full name</span>
+                <input name="name" type="text" required autocomplete="name" class="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-soft/50 focus:border-teal outline-none transition-colors" />
+              </label>
+              <label class="block">
+                <span class="block text-sm font-medium text-ink mb-1.5">Phone</span>
+                <input name="phone" type="tel" required autocomplete="tel" class="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-soft/50 focus:border-teal outline-none transition-colors" />
+              </label>
+              <label class="block">
+                <span class="block text-sm font-medium text-ink mb-1.5">Email</span>
+                <input name="email" type="email" autocomplete="email" class="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-soft/50 focus:border-teal outline-none transition-colors" />
+              </label>
+              <label class="block">
+                <span class="block text-sm font-medium text-ink mb-1.5">Reason for visit</span>
+                <select name="service" class="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink focus:border-teal outline-none transition-colors">
+                  {services.map((s) => <option>{s}</option>)}
+                </select>
+              </label>
+              <label class="block">
+                <span class="block text-sm font-medium text-ink mb-1.5">Preferred day / time</span>
+                <input name="preferred" type="text" placeholder="e.g. weekday mornings" class="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-soft/50 focus:border-teal outline-none transition-colors" />
+              </label>
+              <label class="block sm:col-span-2">
+                <span class="block text-sm font-medium text-ink mb-1.5">Anything we should know? <span class="text-ink-soft font-normal">(optional)</span></span>
+                <textarea name="message" rows="3" class="w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-soft/50 focus:border-teal outline-none transition-colors resize-y"></textarea>
+              </label>
+            </div>
+
+            <!-- honeypot -->
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <button type="submit" class="btn btn-primary w-full justify-center mt-5 text-base">Request appointment</button>
+            <p class="text-ink-soft/80 text-xs mt-3 text-center">Demo form — submissions aren’t delivered until a Web3Forms key is added. This is a concept preview, not the official Maranatha Dental site.</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

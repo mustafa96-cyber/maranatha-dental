@@ -1,0 +1,58 @@
+---
+const year = new Date().getFullYear();
+const PHONE = '(714) 537-7773';
+const TEL = 'tel:+17145377773';
+const nav = [
+  { href: '/#services', label: 'Services' },
+  { href: '/#new-patients', label: 'New patients' },
+  { href: '/#comfort', label: 'Comfort & care' },
+  { href: '/#insurance', label: 'Insurance' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/#visit', label: 'Visit us' },
+];
+---
+<footer class="bg-cream-2 pt-16 pb-10 border-t border-ink/10">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="inline-flex w-9 h-9 rounded-xl bg-teal items-center justify-center" aria-hidden="true">
+            <svg viewBox="0 0 64 64" class="w-6 h-6"><path d="M32 15c-6 0-8 3-13 3-4.5 0-7 2.5-7 9 0 7 2.6 12.7 5 19 1.4 3.7 2.4 7 4.6 7 2.6 0 2.4-6 5.4-6s2.8 6 5.4 6c2.2 0 3.2-3.3 4.6-7 2.4-6.3 5-12 5-19 0-6.5-2.5-9-7-9-5 0-7-3-13-3z" fill="#faf8f3"/><circle cx="24.5" cy="27" r="2.4" fill="#ef6f53"/></svg>
+          </span>
+          <span class="font-display text-xl font-semibold text-ink">Maranatha <span class="text-teal-ink">Dental</span></span>
+        </div>
+        <p class="text-ink-soft text-sm leading-relaxed mt-4 max-w-sm">Gentle family &amp; cosmetic dentistry in Garden Grove — honest care, calm rooms, and a warm welcome for every smile.</p>
+        <a href="/#book" class="btn btn-primary mt-6 !py-2.5">Book appointment</a>
+      </div>
+
+      <nav aria-label="Footer">
+        <h3 class="text-ink font-semibold text-sm mb-4">Explore</h3>
+        <ul class="space-y-2.5">
+          {nav.map((l) => (
+            <li><a href={l.href} class="text-ink-soft text-sm hover:text-teal-ink transition-colors">{l.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <div>
+        <h3 class="text-ink font-semibold text-sm mb-4">Visit &amp; contact</h3>
+        <address class="not-italic text-ink-soft text-sm space-y-2 leading-relaxed">
+          <p>11122 Trask Ave<br/>Garden Grove, CA 92843</p>
+          <p><a href={TEL} class="hover:text-teal-ink transition-colors font-medium text-ink">{PHONE}</a></p>
+          <p class="text-ink-soft">Mon–Fri (til 7pm Tue–Thu)<br/>Sat 9am–3pm · Sun closed</p>
+        </address>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-ink/10 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
+      <p class="text-ink-soft text-xs">© {year} Maranatha Dental. All rights reserved.</p>
+      <p class="text-ink-soft text-xs">
+        Website by <a href="https://saeditech.com" target="_blank" rel="noopener" class="font-semibold text-teal-ink hover:text-ink transition-colors">Saedi Tech</a>
+      </p>
+    </div>
+
+    <p class="text-ink-soft/70 text-[0.7rem] leading-relaxed mt-6 max-w-3xl">
+      This is a speculative design concept created by Saedi Tech to demonstrate a modern website for Maranatha Dental. It is not the official Maranatha Dental website, is not affiliated with or endorsed by the practice, and is intentionally excluded from search engines. Business name, address, phone, and hours are shown from public listings; offers, testimonials, and other content are illustrative examples. Please verify all details with the office directly.
+    </p>
+  </div>
+</footer>

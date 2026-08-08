@@ -1,0 +1,75 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+const links = [
+  { href: '/#services', label: 'Services' },
+  { href: '/#new-patients', label: 'New patients' },
+  { href: '/#comfort', label: 'Comfort' },
+  { href: '/#faq', label: 'FAQ' },
+  { href: '/#visit', label: 'Visit' },
+];
+const PHONE = '(714) 537-7773';
+const TEL = 'tel:+17145377773';
+---
+
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex items-center justify-between h-[72px]">
+      <a href="/" class="group flex items-center gap-2.5 shrink-0" aria-label="Maranatha Dental, home">
+        <span class="inline-flex w-9 h-9 rounded-xl bg-teal items-center justify-center shadow-[0_8px_18px_-10px_var(--color-teal)]" aria-hidden="true">
+          <svg viewBox="0 0 64 64" class="w-6 h-6"><path d="M32 15c-6 0-8 3-13 3-4.5 0-7 2.5-7 9 0 7 2.6 12.7 5 19 1.4 3.7 2.4 7 4.6 7 2.6 0 2.4-6 5.4-6s2.8 6 5.4 6c2.2 0 3.2-3.3 4.6-7 2.4-6.3 5-12 5-19 0-6.5-2.5-9-7-9-5 0-7-3-13-3z" fill="#faf8f3"/><circle cx="24.5" cy="27" r="2.4" fill="#ef6f53"/></svg>
+        </span>
+        <span class="flex flex-col leading-none">
+          <span class="font-display text-[1.35rem] sm:text-[1.55rem] text-ink font-semibold tracking-tight leading-none">Maranatha <span class="text-teal-ink">Dental</span></span>
+          <span class="text-ink-soft text-[0.54rem] tracking-[0.28em] font-semibold uppercase mt-1">Garden Grove, California</span>
+        </span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8" aria-label="Primary">
+        {links.map((l) => (
+          <a href={l.href} class="text-sm font-medium text-ink-soft hover:text-teal-ink transition-colors duration-300">{l.label}</a>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href={TEL} class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-teal-ink transition-colors" aria-label={`Call Maranatha Dental at ${PHONE}`}>
+          <svg class="w-4 h-4 text-teal-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25z" /></svg>
+          {PHONE}
+        </a>
+        <ThemeToggle />
+        <a href="/#book" class="hidden sm:inline-flex btn btn-primary text-sm !py-2.5 !px-5 whitespace-nowrap">Book appointment</a>
+        <button id="menu-toggle" class="lg:hidden inline-flex items-center justify-center w-10 h-10 text-ink" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" type="button">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" /></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden overflow-hidden max-h-0 transition-[max-height] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] bg-cream/98 backdrop-blur-md border-t border-ink/10">
+    <nav class="px-6 py-5 flex flex-col gap-1" aria-label="Mobile">
+      {links.map((l) => (
+        <a href={l.href} class="mobile-link py-3 text-lg font-medium text-ink border-b border-ink/10 hover:text-teal-ink transition-colors">{l.label}</a>
+      ))}
+      <div class="flex flex-col gap-3 pt-4">
+        <a href={TEL} class="mobile-link btn btn-outline justify-center">Call {PHONE}</a>
+        <a href="/#book" class="mobile-link btn btn-primary justify-center">Book appointment</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  function initHeader() {
+    const header = document.getElementById('site-header');
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    if (!header || !toggle || !menu) return;
+    if (header.dataset.bound === 'true') return;
+    header.dataset.bound = 'true';
+    let open = false;
+    const setMenu = (state) => { open = state; toggle.setAttribute('aria-expanded', String(open)); menu.style.maxHeight = open ? menu.scrollHeight + 'px' : '0px'; };
+    toggle.addEventListener('click', () => setMenu(!open));
+    menu.querySelectorAll('.mobile-link').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  }
+  initHeader();
+  document.addEventListener('astro:after-swap', initHeader);
+</script>

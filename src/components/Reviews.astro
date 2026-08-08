@@ -1,0 +1,50 @@
+---
+// Generic, illustrative testimonials — representative of the warm, gentle care
+// patients describe. No fabricated names tied to real people or fake counts.
+const reviews = [
+  {
+    quote: 'I used to put off the dentist for years. Everyone here was so patient and kind that I actually booked my next cleaning before I left.',
+    who: 'Anxious-patient turned regular',
+    tag: 'Gentle care',
+  },
+  {
+    quote: 'They explained exactly what I needed and what could wait — no pressure, no upselling. My whole family comes here now.',
+    who: 'Local family of four',
+    tag: 'Honest advice',
+  },
+  {
+    quote: 'Chipped a tooth on a Friday and they fit me in fast. Walked out comfortable and smiling the same week.',
+    who: 'Emergency visit',
+    tag: 'Same-week help',
+  },
+];
+---
+<section id="reviews" class="py-20 sm:py-28 scroll-mt-20 bg-cream-2" data-split>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+      <div class="max-w-xl">
+        <p class="reveal chip text-coral-ink mb-4 flex items-center gap-3"><span class="hair w-9"></span> In their words</p>
+        <h2 class="reveal font-display text-ink text-[clamp(2rem,4.8vw,3.3rem)] font-semibold leading-[1.03] text-balance">Patients keep coming back for the way we make them feel.</h2>
+      </div>
+      <p class="reveal text-ink-soft max-w-xs text-sm leading-relaxed">Maranatha Dental has earned a warm reputation across Garden Grove and Orange County for gentle, judgment-free care.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      {reviews.map((r, i) => (
+        <figure class="reveal group card-soft p-7 flex flex-col" style={`animation-delay:${i * 100}ms`}>
+          <div class="flex items-center gap-1 text-coral mb-4" aria-label="Five out of five stars">
+            {Array.from({ length: 5 }).map(() => (
+              <svg class="w-4.5 h-4.5" width="18" height="18" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.6 12.5 7l5.9.5-4.5 3.9 1.4 5.8L10 14.9 4.7 17.2l1.4-5.8L1.6 7.5 7.5 7z"/></svg>
+            ))}
+          </div>
+          <blockquote class="text-ink text-[1.02rem] leading-relaxed flex-1">“{r.quote}”</blockquote>
+          <figcaption class="mt-5 pt-5 border-t border-ink/10 flex items-center justify-between">
+            <span class="text-ink-soft text-sm font-medium">{r.who}</span>
+            <span class="chip text-teal-ink text-[0.6rem]">{r.tag}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="reveal text-ink-soft/80 text-xs mt-8 max-w-2xl">Testimonials shown are representative examples of the experiences patients describe, created for this preview and not attributed to specific individuals.</p>
+  </div>
+</section>

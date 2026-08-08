@@ -1,0 +1,68 @@
+---
+// Services as friendly cards in an asymmetric bento. One featured photo card
+// (cosmetic) anchors the grid; the rest are calm icon cards.
+const services = [
+  {
+    title: 'Cleanings & Exams',
+    body: 'Comfortable checkups, digital X-rays, and gentle hygiene visits that keep small things small.',
+    icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    title: 'Crowns, Veneers & Bridges',
+    body: 'Natural-looking restorations to repair, strengthen, and beautifully rebuild your smile.',
+    icon: 'M12 3l7 4v5c0 4.5-3 8.5-7 9-4-.5-7-4.5-7-9V7l7-4z',
+  },
+  {
+    title: 'Dental Implants',
+    body: 'Replace missing teeth with a stable, permanent foundation that looks and feels like your own.',
+    icon: 'M12 2c-3 0-4.5 2-4.5 5 0 4 1.5 7 2.2 11 .3 1.6.8 4 2.3 4s2-2.4 2.3-4c.7-4 2.2-7 2.2-11 0-3-1.5-5-4.5-5z',
+  },
+  {
+    title: 'Emergency Dental',
+    body: 'Toothache or a broken tooth? Call us — we make room for same-week urgent visits.',
+    icon: 'M13 2 4.5 13.5H11l-1 8L19.5 10H13l0-8z',
+  },
+  {
+    title: 'Kids & Family',
+    body: 'A friendly first visit for little ones and easy scheduling for the whole household.',
+    icon: 'M12 11a3 3 0 100-6 3 3 0 000 6zm7 9a7 7 0 00-14 0M18 8a2.5 2.5 0 100-5M6 8a2.5 2.5 0 110-5',
+  },
+];
+---
+<section id="services" class="relative py-20 sm:py-28 scroll-mt-20 overflow-hidden" data-split>
+  <div class="absolute -z-10 top-[12%] right-[-8%] w-[34vw] h-[34vw] max-w-[420px] max-h-[420px] rounded-full blobby opacity-40" style="background: radial-gradient(circle at 45% 45%, color-mix(in srgb, var(--color-mint) 80%, #fff), transparent 70%);" aria-hidden="true"></div>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="reveal chip text-coral-ink mb-4 flex items-center gap-3"><span class="hair w-9"></span> What we do</p>
+      <h2 class="reveal font-display text-ink text-[clamp(2rem,5vw,3.4rem)] font-semibold leading-[1.03] text-balance">Everything your smile needs, under one calm roof.</h2>
+      <p class="reveal text-ink-soft text-base sm:text-lg leading-relaxed mt-5">General, cosmetic, and family dentistry — delivered gently, explained clearly, and priced with no surprises.</p>
+    </div>
+
+    <div class="grid gap-4 sm:gap-5 lg:grid-cols-3 lg:auto-rows-fr">
+      <!-- Featured photo card -->
+      <article class="reveal-scale group relative lg:col-span-2 lg:row-span-2 rounded-[1.75rem] overflow-hidden min-h-[320px] text-cream shadow-[0_28px_60px_-34px_rgba(20,50,43,0.7)]">
+        <img src="/images/smile-man.jpg" alt="A man with a bright, confident smile" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105" loading="lazy" width="900" height="700" />
+        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(6,28,25,0.92) 0%, rgba(6,28,25,0.5) 45%, rgba(6,28,25,0.12) 100%);" aria-hidden="true"></div>
+        <div class="relative h-full flex flex-col justify-end p-7 sm:p-9">
+          <span class="chip text-mint mb-3">Most requested</span>
+          <h3 class="font-display text-3xl sm:text-4xl font-semibold leading-tight" style="text-shadow: 0 2px 14px rgba(0,0,0,0.45);">Cosmetic &amp; Teeth Whitening</h3>
+          <p class="text-cream/90 max-w-md mt-3 leading-relaxed" style="text-shadow: 0 1px 8px rgba(0,0,0,0.5);">Professional whitening, porcelain veneers, and smile makeovers tailored to you — subtle, natural, and confidence-boosting.</p>
+          <a href="/#book" class="inline-flex items-center gap-2 mt-5 font-semibold text-cream hover:gap-3 transition-all">
+            Ask about a brighter smile
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>
+          </a>
+        </div>
+      </article>
+
+      {services.map((s) => (
+        <article class="reveal lift card-soft p-6 sm:p-7 flex flex-col">
+          <span class="inline-flex w-12 h-12 rounded-2xl bg-cream-2 items-center justify-center mb-4" aria-hidden="true">
+            <svg class="w-6 h-6 text-teal-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7"><path stroke-linecap="round" stroke-linejoin="round" d={s.icon} /></svg>
+          </span>
+          <h3 class="font-display text-xl font-semibold text-ink leading-snug">{s.title}</h3>
+          <p class="text-ink-soft text-sm leading-relaxed mt-2">{s.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

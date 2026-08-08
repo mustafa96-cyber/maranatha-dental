@@ -1,0 +1,35 @@
+---
+// "New patient? Here's how easy it is" — three calm steps on a mint panel.
+const steps = [
+  { n: '01', title: 'Reach out', body: 'Book online or call (714) 537-7773. Tell us a little about what you need — no pressure, no jargon.' },
+  { n: '02', title: 'Your gentle first visit', body: 'We listen, take a look, and walk you through your options and costs in plain language before anything happens.' },
+  { n: '03', title: 'A plan that fits you', body: 'Together we choose next steps that suit your comfort, schedule, and budget — including insurance and financing.' },
+];
+---
+<section id="new-patients" class="py-20 sm:py-28 scroll-mt-20" data-split>
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div class="relative rounded-[2rem] bg-cream-2 dot-grid overflow-hidden px-6 sm:px-12 py-14 sm:py-16">
+      <div class="max-w-2xl">
+        <p class="reveal chip text-teal-ink mb-4 flex items-center gap-3"><span class="hair w-9" style="background:linear-gradient(90deg,var(--color-teal),transparent);"></span> New here?</p>
+        <h2 class="reveal font-display text-ink text-[clamp(1.9rem,4.6vw,3.1rem)] font-semibold leading-[1.04] text-balance">Becoming a patient is genuinely easy.</h2>
+        <p class="reveal text-ink-soft text-base sm:text-lg leading-relaxed mt-4">Three simple steps — and someone friendly with you the whole way.</p>
+      </div>
+
+      <ol class="relative grid sm:grid-cols-3 gap-8 sm:gap-6 mt-12">
+        <div class="hidden sm:block absolute top-7 left-[16%] right-[16%] h-px bg-teal/25" aria-hidden="true"></div>
+        {steps.map((s, i) => (
+          <li class="reveal relative" style={`animation-delay:${i * 120}ms`}>
+            <span class="relative z-10 inline-flex w-14 h-14 rounded-2xl bg-teal text-white font-display text-xl font-semibold items-center justify-center shadow-[0_12px_26px_-12px_var(--color-teal)]">{s.n}</span>
+            <h3 class="font-display text-xl font-semibold text-ink mt-5">{s.title}</h3>
+            <p class="text-ink-soft text-sm leading-relaxed mt-2 max-w-xs">{s.body}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="reveal mt-11 flex flex-wrap gap-3">
+        <a href="/#book" class="btn btn-primary">Request an appointment</a>
+        <a href="tel:+17145377773" class="btn btn-outline">Or call the office</a>
+      </div>
+    </div>
+  </div>
+</section>
